@@ -1,0 +1,123 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fffafc;
+    color: #333;
+}
+
+.hero {
+    background: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.overlay {
+    background: rgba(255, 228, 236, 0.8);
+    padding: 40px;
+    border-radius: 12px;
+    animation: fadeIn 2s ease;
+}
+
+.overlay h1 {
+    margin: 0;
+    font-size: 2.2em;
+    color: #ff4d6d;
+}
+
+.overlay p {
+    font-size: 1.2em;
+    margin: 10px 0 20px;
+}
+
+.cta-btn {
+    background: #ff6f91;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+.cta-btn:hover {
+    background: #ff4d6d;
+}
+
+section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+blockquote {
+    font-style: italic;
+    background: #fff0f5;
+    padding: 15px;
+    border-left: 4px solid #ff6f91;
+    margin: 20px 0;
+}
+
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #ffe4ec;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1em;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+
+.cta-section {
+    text-align: center;
+}
+
+button {
+    background: #ff6f91;
+    border: none;
+    padding: 12px 24px;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+button:hover {
+    background: #ff4d6d;
+    transform: scale(1.05);
+}
+
+footer {
+    background: #ffe4ec;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.social-icons a {
+    color: #ff4d6d;
+    margin: 0 10px;
+    font-size: 1.5em;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
