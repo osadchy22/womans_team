@@ -92,13 +92,13 @@
                     chat_id: CHAT_ID,
                     text: `📩 Новая заявка:\n👩 Имя: ${name}\n📧 Email: ${email}\n📞 Телефон: ${phone}`,
                     parse_mode: "HTML"
-                }).then(() => {
+            }).then(() => {
                 alert("Спасибо! Ваша заявка отправлена 💌");
                 document.getElementById('lead-form').reset();
             }).catch(err => {
                 alert("Ошибка отправки. Попробуйте снова.");
                 console.error(err);
-            })
+            });
 
             // 2. Отправка в Google Sheets Временно отключена
             /*--------fetch(SHEETS_URL, {
