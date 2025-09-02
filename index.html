@@ -73,7 +73,14 @@
 
     document.getElementById('lead-form').addEventListener('submit', function(e){
         e.preventDefault();
+
+        if (!document.getElementById('consent').checked) {
+            alert("Необходимо согласие на обработку данных.");
+            return;
+        }
+
         const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
 
         // 1. Отправка в Telegram
@@ -82,7 +89,7 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 chat_id: CHAT_ID,
-                text: 📩 Новая заявка:\n👩 Имя: ${name}\n📞 Телефон: ${phone},
+                text: 📩 Новая заявка:\n👩 Имя: ${name}\n📧 Email: ${email}\n📞 Телефон: ${phone},
                 parse_mode: "HTML"
             })
         });
@@ -90,7 +97,7 @@
         // 2. Отправка в Google Sheets
         fetch(SHEETS_URL, {
             method: "POST",
-            body: JSON.stringify({ name: name, phone: phone })
+            body: JSON.stringify({ name: name, email: email, phone: phone })
         }).then(() => {
             alert("Спасибо! Ваша заявка отправлена 💌");
             document.getElementById('lead-form').reset();
