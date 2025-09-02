@@ -17,7 +17,7 @@ body {
 }
 
 .overlay {
-    background: rgba(255, 228, 236, 0.8);
+    background: rgba(255, 228, 236, 0.85);
     padding: 40px;
     border-radius: 12px;
     animation: fadeIn 2s ease;
@@ -80,21 +80,40 @@ blockquote {
     transform: scale(1.05);
 }
 
-.cta-section {
+.form-section {
     text-align: center;
+    background: #fff0f5;
+    padding: 40px 20px;
+    border-radius: 12px;
+    margin-top: 30px;
 }
 
-button {
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+form input {
+    padding: 12px;
+    border: 1px solid #ffb6c1;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+form button {
     background: #ff6f91;
     border: none;
-    padding: 12px 24px;
+    padding: 12px;
     color: white;
-    font-size: 1.2em;
+    font-size: 1.1em;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
 }
-button:hover {
+form button:hover {
     background: #ff4d6d;
     transform: scale(1.05);
 }
