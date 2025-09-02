@@ -61,32 +61,39 @@
     </footer>
 
     <script>
-        const BOT_TOKEN = "ТОКЕН_ТВОЕГО_БОТА";
-        const CHAT_ID = "ID_ЧАТА_ИЛИ_ТВОЙ_ID";
-        const URL_API = https://api.telegram.org/bot${BOT_TOKEN}/sendMessage;
+    const BOT_TOKEN = "ТОКЕН_ТВОЕГО_БОТА";
+    const CHAT_ID = "ID_ЧАТА_ИЛИ_ТВОЙ_ID";
+    const URL_API = https://api.telegram.org/bot${BOT_TOKEN}/sendMessage;
+    const SHEETS_URL = "https://script.google.com/macros/s/ВАШ_СЕРВИС_URL/exec";
 
-        document.getElementById('lead-form').addEventListener('submit', function(e){
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const message = 📩 Новая заявка:\n👩 Имя: ${name}\n📞 Телефон: ${phone};
-            
-            fetch(URL_API, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                    parse_mode: "HTML"
-                })
-            }).then(() => {
-                alert("Спасибо! Мы свяжемся с вами 💌");
-                document.getElementById('lead-form').reset();
-            }).catch(err => {
-                alert("Ошибка отправки. Напишите нам в Telegram.");
-                console.error(err);
-            });
+    document.getElementById('lead-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+
+        // 1. Отправка в Telegram
+        fetch(URL_API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: 📩 Новая заявка:\n👩 Имя: ${name}\n📞 Телефон: ${phone},
+                parse_mode: "HTML"
+            })
         });
-    </script>
+
+        // 2. Отправка в Google Sheets
+        fetch(SHEETS_URL, {
+            method: "POST",
+            body: JSON.stringify({ name: name, phone: phone })
+        }).then(() => {
+            alert("Спасибо! Ваша заявка отправлена 💌");
+            document.getElementById('lead-form').reset();
+        }).catch(err => {
+            alert("Ошибка отправки. Попробуйте снова.");
+            console.error(err);
+        });
+    });
+</script>
 </body>
 </html>
