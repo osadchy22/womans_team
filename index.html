@@ -67,48 +67,58 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const BOT_TOKEN = "8270350568:AAGreZt-bfjH-t99Eneb4hVpwTXyndjwVk8";
-        const CHAT_ID = "701391735";
+        // Конфигурация 
+        const BOT_TOKEN = "8270350568:AAGreZt-bfjH-t99Eneb4hVpwTXyndjwVk8"; 
+        const CHAT_ID = "701391735";      
         const URL_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzw6EBc7cXWNLbu_t2MheHwEf4RGJPPF9ODIeuhvrfhsPg5eia1YYymPvV_zBf8texa/exec";
 
-        document.getElementById('lead-form').addEventListener('submit', function(e){
+        document.getElementById('lead-form').addEventListener('submit', function(e) {
             e.preventDefault();
 
+            // Проверка согласия
             if (!document.getElementById('consent').checked) {
                 alert("Необходимо согласие на обработку данных.");
                 return;
             }
 
+            // Получаем значения полей
             const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+            const second_name = document.getElementById('second_name').value;
             const phone = document.getElementById('phone').value;
 
-            // 1. Отправка в Telegram
+            // Создаем сообщение для Telegram
+            const message = `📩 Новая заявка:\n👩 Имя: ${name}\n📧 Фамилия: ${second_name}\n📞 Телефон: ${phone}`;
+
+            // Отправка в Telegram
             fetch(URL_API, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { 
+                    "Content-Type": "application/json" 
+                },
                 body: JSON.stringify({
                     chat_id: CHAT_ID,
-                    text: `📩 Новая заявка:\n👩 Имя: ${name}\n📧 Email: ${email}\n📞 Телефон: ${phone}`,
+                    text: message,
                     parse_mode: "HTML"
+                })
             })
-            });
-
-            // 2. Отправка в Google Sheets Временно отключена
-            /*--------fetch(SHEETS_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" }, // Добавьте этот заголовок
-                body: JSON.stringify({ name: name, email: email, phone: phone })
-            }).then(() => {
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ошибка отправки в Telegram');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Успешная отправка - показываем уведомление и очищаем форму
                 alert("Спасибо! Ваша заявка отправлена 💌");
                 document.getElementById('lead-form').reset();
-            }).catch(err => {
+            })
+            .catch(error => {
+                // Обработка ошибок
+                console.error('Ошибка:', error);
                 alert("Ошибка отправки. Попробуйте снова.");
-                console.error(err);
-            });--------*/
+            });
+            });
         });
-    });
     </script>
 
 </body>
