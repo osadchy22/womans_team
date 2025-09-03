@@ -2,8 +2,8 @@ body {
     font-family: 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
-    background: #fffafc;
-    color: #333;
+    background: #f8f9fa;
+    color: #45494e;
 }
 
 .hero {
@@ -17,34 +17,37 @@ body {
 }
 
 .overlay {
-    background: rgba(255, 228, 236, 0.85);
+    background: rgba(69, 73, 78, 0.9);
     padding: 40px;
     border-radius: 12px;
     animation: fadeIn 2s ease;
+    color: white;
 }
 
 .overlay h1 {
     margin: 0;
     font-size: 2.2em;
-    color: #ff4d6d;
+    color: #ffd700;
 }
 
 .overlay p {
     font-size: 1.2em;
     margin: 10px 0 20px;
+    color: #ffffff;
 }
 
 .cta-btn {
-    background: #ff6f91;
-    color: white;
+    background: #ffd700;
+    color: #45494e;
     padding: 12px 20px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 .cta-btn:hover {
-    background: #ff4d6d;
+    background: #ffed4e;
+    transform: scale(1.05);
 }
 
 section {
@@ -55,10 +58,11 @@ section {
 
 blockquote {
     font-style: italic;
-    background: #fff0f5;
+    background: #fffae6;
     padding: 15px;
-    border-left: 4px solid #ff6f91;
+    border-left: 4px solid #ffd700;
     margin: 20px 0;
+    color: #45494e;
 }
 
 .program-grid {
@@ -68,21 +72,24 @@ blockquote {
 }
 
 .card {
-    background: #ffe4ec;
+    background: #ffffff;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
     font-size: 1.1em;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+    box-shadow: 0 3px 6px rgba(69, 73, 78, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #ffd700;
+    color: #45494e;
 }
 .card:hover {
     transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(69, 73, 78, 0.2);
 }
 
 .form-section {
     text-align: center;
-    background: #fff0f5;
+    background: #fffae6;
     padding: 40px 20px;
     border-radius: 12px;
     margin-top: 30px;
@@ -98,42 +105,50 @@ form {
 
 form input {
     padding: 12px;
-    border: 1px solid #ffb6c1;
+    border: 2px solid #ffd700;
     border-radius: 8px;
     font-size: 1em;
+    background: #ffffff;
+    color: #45494e;
+}
+form input:focus {
+    outline: none;
+    border-color: #45494e;
 }
 
 form button {
-    background: #ff6f91;
+    background: #45494e;
     border: none;
     padding: 12px;
-    color: white;
+    color: #ffffff;
     font-size: 1.1em;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
 }
 form button:hover {
-    background: #ff4d6d;
+    background: #5a5f65;
     transform: scale(1.05);
 }
 
 footer {
-    background: #ffe4ec;
+    background: #45494e;
     text-align: center;
     padding: 20px;
     margin-top: 30px;
+    color: white;
 }
 
 .social-icons a {
-    color: #ff4d6d;
+    color: #ffd700;
     margin: 0 10px;
     font-size: 1.5em;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.3s ease;
 }
 .social-icons a:hover {
     transform: scale(1.2);
+    color: #ffed4e;
 }
 
 .consent {
@@ -141,12 +156,54 @@ footer {
     align-items: center;
     font-size: 0.9rem;
     margin: 10px 0;
+    color: #45494e;
 }
 
 .consent input {
     margin-right: 8px;
 }
+
+.intro p {
+    color: #45494e;
+    font-weight: 500;
+}
+
+.program h2, .bonus h2, .form-section h2 {
+    color: #45494e;
+    text-align: center;
+}
+
+.bonus p {
+    color: #45494e;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.bonus strong {
+    color: #ffd700;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .overlay {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+    .overlay h1 {
+        font-size: 1.8em;
+    }
+    
+    .overlay p {
+        font-size: 1em;
+    }
+    
+    .program-grid {
+        grid-template-columns: 1fr;
+    }
 }
