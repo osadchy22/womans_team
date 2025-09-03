@@ -180,7 +180,7 @@ footer {
 }
 
 .bonus strong {
-    color: #fffacd; /* Нежный желтый */
+    color: #45494e; /* Изменено на серый цвет для лучшей читаемости */
 }
 
 @keyframes fadeIn {
