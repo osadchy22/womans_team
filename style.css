@@ -196,20 +196,6 @@ footer {
     text-align: left;
 }
 
-/* Стиль для жирных точек */
-.bonus-conditions p:not(:has(strong)) {
-    position: relative;
-    padding-left: 15px;
-}
-
-.bonus-conditions p:not(:has(strong))::before {
-    content: "•";
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-    color: #45494e;
-}
-
 /* Стили для бонусной секции */
 .bonus-intro {
     text-align: center;
