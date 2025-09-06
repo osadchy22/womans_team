@@ -196,6 +196,63 @@ footer {
     text-align: left;
 }
 
+/* Стиль для жирных точек */
+.bonus-conditions p:not(:has(strong)) {
+    position: relative;
+    padding-left: 15px;
+}
+
+.bonus-conditions p:not(:has(strong))::before {
+    content: "•";
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    color: #45494e;
+}
+
+/* Стили для бонусной секции */
+.bonus-intro {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #45494e;
+    margin: 20px 0;
+}
+
+.prizes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+    text-align: left;
+}
+
+.prize-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #fffae6;
+    border-radius: 8px;
+    border-left: 4px solid #fffacd;
+    transition: transform 0.2s ease;
+}
+
+.prize-item:hover {
+    transform: translateX(5px);
+}
+
+.prize-icon {
+    color: #fffacd;
+    font-size: 1.2em;
+    min-width: 24px;
+}
+
+.prize-item span {
+    color: #45494e;
+    font-weight: 500;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -222,5 +279,19 @@ footer {
     
     .bonus-conditions {
         padding-left: 10px;
+    }
+    
+    /* Адаптивность для призов */
+    .bonus-intro {
+        font-size: 1.1em;
+    }
+    
+    .prizes-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .prize-item {
+        padding: 10px;
     }
 }
